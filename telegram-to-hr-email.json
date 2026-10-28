@@ -1,0 +1,216 @@
+{
+  "name": "Telegram to HR Email(CV)",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "id": "fa3aa2bb-d004-4f57-9c6e-6c2ecd846f6b",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -4608,
+        -1040
+      ],
+      "webhookId": "telegram-to-email-webhook",
+      "credentials": {
+        "telegramApi": {
+          "id": "7DWIKoHT2wA0eM0G",
+          "name": "Telegram account omar"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').first().json.message.from.id }}",
+        "text": "=✅ Emails are all sent",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "6419901a-91d1-4664-82f4-640d5326ef84",
+      "name": "Telegram Success1",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -3488,
+        -1040
+      ],
+      "webhookId": "cf501002-5882-4df9-aea7-e028cc79e9f9",
+      "credentials": {
+        "telegramApi": {
+          "id": "7DWIKoHT2wA0eM0G",
+          "name": "Telegram account omar"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.email }}",
+        "subject": "Software Engineer Application – Omar Alshareef",
+        "message": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0;padding:0;background:#0a0a0a;font-family:Arial,Helvetica,sans-serif;color:#f5f5f5;\">\n\n<table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background:#0a0a0a;padding:32px 16px;\">\n  <tr>\n    <td align=\"center\">\n\n      <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"\n        style=\"max-width:640px;background:#0d0d0d;border:1px solid #252525;border-radius:16px;\">\n\n        <tr>\n          <td style=\"padding:28px 34px 18px;\">\n\n            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">\n              <tr>\n                <td>\n                  <span style=\"\n                    background:#3a3a3a;\n                    color:#fff;\n                    font-size:14px;\n                    font-weight:700;\n                    padding:5px 6px;\n                  \">\n                    O.A\n                  </span>\n                </td>\n\n                <td align=\"right\" style=\"\n                  color:#777;\n                  font-size:11px;\n                  letter-spacing:1.6px;\n                  text-transform:uppercase;\n                \">\n                  COMPUTER ENGINEER &amp; DEVELOPER\n                </td>\n              </tr>\n            </table>\n\n          </td>\n        </tr>\n\n        <tr>\n          <td style=\"padding:18px 34px 8px;\">\n\n            <div style=\"\n              color:#888;\n              font-size:11px;\n              letter-spacing:2.5px;\n              text-transform:uppercase;\n              margin-bottom:12px;\n            \">\n              SOFTWARE ENGINEERING\n            </div>\n\n            <h1 style=\"\n              margin:0;\n              color:#fff;\n              font-size:34px;\n              line-height:1.1;\n              letter-spacing:-1.5px;\n            \">\n              Hello<span style=\"color:#777;\">.</span>\n            </h1>\n\n          </td>\n        </tr>\n\n        <tr>\n          <td style=\"\n            padding:18px 34px;\n            color:#aaa;\n            font-size:15px;\n            line-height:1.7;\n          \">\n\n            <p style=\"margin:0 0 14px;\">\n              I hope you’re doing well.\n            </p>\n\n            <p style=\"margin:0 0 14px;\">\n              I’m currently looking for a new opportunity in\n              <strong style=\"color:#fff;font-weight:500;\">\n                Software Engineering / Development\n              </strong>.\n              I’ve attached my CV for your reference.\n            </p>\n\n            <p style=\"margin:0 0 14px;\">\n              I’d appreciate it if you could let me know about any suitable openings,\n              or refer me to someone who may be hiring.\n            </p>\n\n            <p style=\"margin:0;\">\n              Thank you for your time and support.\n            </p>\n\n          </td>\n        </tr>\n\n        <tr>\n          <td style=\"padding:8px 34px 28px;\">\n\n            <a href=\"https://www.omaralshareef.com/\"\n              style=\"\n                display:inline-block;\n                background:#f5f5f5;\n                color:#111;\n                text-decoration:none;\n                font-size:13px;\n                font-weight:600;\n                padding:12px 18px;\n                border-radius:999px;\n                margin-right:8px;\n              \">\n              View Portfolio\n            </a>\n\n            <a href=\"YOUR_LINKEDIN_URL\"\n              style=\"\n                display:inline-block;\n                color:#eee;\n                text-decoration:none;\n                font-size:13px;\n                padding:11px 17px;\n                border:1px solid #363636;\n                border-radius:999px;\n                margin-right:8px;\n              \">\n              LinkedIn\n            </a>\n\n            <a href=\"YOUR_GITHUB_URL\"\n              style=\"\n                display:inline-block;\n                color:#eee;\n                text-decoration:none;\n                font-size:13px;\n                padding:11px 17px;\n                border:1px solid #363636;\n                border-radius:999px;\n              \">\n              GitHub\n            </a>\n\n          </td>\n        </tr>\n\n        <tr>\n          <td style=\"\n            border-top:1px solid #252525;\n            padding:20px 34px 24px;\n          \">\n\n            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">\n              <tr>\n                <td width=\"44\">\n                  <div style=\"\n                    width:34px;\n                    height:34px;\n                    line-height:34px;\n                    text-align:center;\n                    border-radius:50%;\n                    border:1px solid #3a3a3a;\n                    color:#fff;\n                    font-size:11px;\n                    font-weight:700;\n                  \">\n                    OA\n                  </div>\n                </td>\n\n                <td>\n                  <div style=\"color:#fff;font-size:13px;font-weight:600;\">\n                    Omar AlShareef\n                  </div>\n                  <div style=\"color:#777;font-size:11px;margin-top:2px;\">\n                    Computer Engineer &amp; Developer\n                  </div>\n                </td>\n\n                <td align=\"right\">\n                  <a href=\"https://www.omaralshareef.com/\"\n                    style=\"color:#777;text-decoration:none;font-size:11px;\">\n                    omaralshareef.com ↗\n                  </a>\n                </td>\n              </tr>\n            </table>\n\n          </td>\n        </tr>\n\n      </table>\n\n    </td>\n  </tr>\n</table>\n\n</body>\n</html>",
+        "options": {
+          "appendAttribution": false,
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {
+                "property": "=cv"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -3936,
+        -1040
+      ],
+      "id": "849773e7-a6ff-4156-b7be-74569af16e84",
+      "name": "Send a message",
+      "webhookId": "7f7ded3a-7544-43a7-bfbe-6f57ba0aa1df",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VGvo06HS2ogtS69G",
+          "name": "Gmail account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "protocol": "sftp",
+        "path": "files/OmarAlshareef_cv.pdf",
+        "binaryPropertyName": "cv",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1.1,
+      "position": [
+        -4384,
+        -1040
+      ],
+      "id": "0d0fffbd-2e08-455d-9f24-1563d7852edb",
+      "name": "FTP",
+      "credentials": {
+        "sftp": {
+          "id": "HoDdLYIthyLCt9wa",
+          "name": "SFTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $('Telegram Trigger').first().json.message.text || '';\n\n// Find email-like candidates anywhere in the text.\n// Does NOT depend on commas, spaces, semicolons, or line breaks.\nconst candidates = raw.match(\n  /[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}/g\n) || [];\n\n// Validate domain structure.\n// Rejects things such as domains containing underscores,\n// consecutive dots, labels starting/ending with \"-\", etc.\nconst isValidEmail = (email) => {\n  if (email.length > 254) return false;\n\n  const parts = email.split('@');\n  if (parts.length !== 2) return false;\n\n  const [local, domain] = parts;\n\n  if (!local || local.length > 64) return false;\n  if (local.startsWith('.') || local.endsWith('.')) return false;\n  if (local.includes('..')) return false;\n\n  const labels = domain.split('.');\n  if (labels.length < 2) return false;\n\n  for (const label of labels) {\n    if (!label) return false;\n    if (label.length > 63) return false;\n    if (!/^[A-Za-z0-9-]+$/.test(label)) return false;\n    if (label.startsWith('-') || label.endsWith('-')) return false;\n  }\n\n  return true;\n};\n\n// Validate + remove duplicates case-insensitively\nconst seen = new Set();\n\nconst emails = candidates.filter(email => {\n  if (!isValidEmail(email)) return false;\n\n  const key = email.toLowerCase();\n  if (seen.has(key)) return false;\n\n  seen.add(key);\n  return true;\n});\n\nconst cv = $('FTP').first().binary.cv;\n\n// One item per Gmail send\nreturn emails.map(email => ({\n  json: { email },\n  binary: { cv }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4160,
+        -1040
+      ],
+      "id": "955d4fb2-1988-4a55-a68f-05f147a83201",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -3712,
+        -1040
+      ],
+      "id": "c5b17ed0-2108-4bf2-abdf-ed666df51a13",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "content": "##Email Assistant\n**Write the email in telegram"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -4624,
+        -1360
+      ],
+      "id": "547ee202-78c8-40a9-a6a7-77981c186c6a",
+      "name": "Sticky Note"
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "FTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FTP": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Telegram Success1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "6c2460fa-03bb-442a-888e-a837c6e7b38e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0ef319171642ff61a805002a8d3c9810efc150688b66d838b10c1eccf1fabe2e"
+  },
+  "nodeGroups": [],
+  "id": "Jf9GEWceSxPLnrKc",
+  "tags": []
+}
